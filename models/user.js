@@ -24,8 +24,8 @@ module.exports = function(sequelize, DataTypes) {
     firstname: DataTypes.STRING,
     lastname: DataTypes.STRING,
     facebookId: DataTypes.STRING,
-    facebookToken: DataTypes.STRING
-    location: DataTypes.STRING,
+    facebookToken: DataTypes.STRING,
+    location: DataTypes.STRING
   }, {
     hooks:{
       beforeCreate: function(createdUser, options, callback){

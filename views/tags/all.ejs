@@ -1,3 +1,13 @@
 <h1>Search Users by Tag</h1>
 
 <p>Select a genre tag to see artists who tagged themselves!</p>
+
+<% tags.forEach(function(tag){ %>
+  <div class="well">
+    <p>
+      <a href="/users/<%= tag.name %>">
+        <%= tag.name %>
+      </a>
+    </p>
+  </div>
+<% }); %>

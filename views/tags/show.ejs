@@ -1,0 +1,13 @@
+<h2><%= tag.name %></h2>
+
+<h3>Users interested in <%= tag.name %></h3>
+
+<% tag.users.forEach(function(u){ %>
+  <div class="well">
+    <p>
+      <a href="/users/<%= u.id %>">
+        <%= u.location %>
+      </a>
+    </p>
+  </div>
+<% }); %>

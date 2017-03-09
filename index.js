@@ -31,22 +31,20 @@ app.use(function(req, res, next){ //custom middleware
 });
 
 //routes
-app.get('/', function(req, res){
+app.get('/', function(req, res){ //home page
   res.render('home');
-
 });
 
-app.get('/profile', isLoggedin, function(req, res){
+app.get('/profile', isLoggedin, function(req, res){ // current user profile
+  console.log('in profile index.js thingy');
   res.render("profile");
-
 });
-
-
 
 
 //controllers
 app.use('/auth', require('./controllers/auth'));
-
 app.use('/tags', require('./controllers/tags'));
+app.use('/profile', require('./controllers/profile'));
+
 //listen
 app.listen(3000);
