@@ -3,27 +3,26 @@ var db = require('../models');
 var router = express.Router();
 
 router.post('/tags/all', function(req, res) {
-  db.user.findOne({
-    where:{
-      username: "currentUser.username"
-    }
-  })
+var currentUser=req.user.dataValues.id;
 
 
 
-
-  var tags = [];
-  if(req.body.tags){
-    console.log('in the conditional###########################')
-    tags = req.body.tags.split(",");
-    db.tag.create({
-      name: req.body.tags
-    });
-      res.redirect('/profile');
-  }else{
-    console.log('in the else statement');
-
-  };
 });
+
+//
+//   //
+//   // var tags = [];
+//   // if(req.body.tags){
+//   //
+//   //   tags = req.body.tags.split(",");
+//   //   db.tag.create({
+//   //     name: req.body.tags
+//   //   });
+//   //     res.redirect('/profile');
+//   // }else{
+//   //   console.log('in the else statement');
+//
+//   };
+// });
 
 module.exports = router;
