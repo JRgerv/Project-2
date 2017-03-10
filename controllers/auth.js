@@ -1,6 +1,6 @@
 var express = require('express');
 var db = require('../models');
-var passport = require('../config/passportConfig'); //requires the passport config 
+var passport = require('../config/passportConfig'); //requires the passport config
 var router = express.Router();
 
 
@@ -20,6 +20,8 @@ router.post('/login', passport.authenticate('local', {
 router.get('/signup', function(req, res){
   res.render('auth/signup');
 });
+
+
 
 router.post('/signup', function(req, res){
   console.log(req.body);
@@ -61,7 +63,7 @@ router.get('/facebook',passport.authenticate('facebook', { //facebook login
 }));
 
 router.get('/callback/facebook', passport.authenticate('facebook', {
-  successRedirect: '/profile',
+  successRedirect: '/',
   successFlash: 'You are now logged in via Facebook',
   failureRedirect:'/auth/login',
   failureFlash: 'Facebook credentials not recognized'

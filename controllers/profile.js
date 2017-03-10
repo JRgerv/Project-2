@@ -3,7 +3,15 @@ var db = require('../models');
 var router = express.Router();
 
 router.post('/tags/all', function(req, res) {
-  console.log('inside the tags post route');
+  db.user.findOne({
+    where:{
+      username: "currentUser.username"
+    }
+  })
+
+
+
+
   var tags = [];
   if(req.body.tags){
     console.log('in the conditional###########################')
