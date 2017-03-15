@@ -31,7 +31,8 @@ router.post('/signup', function(req, res){
       username: req.body.username,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      password: req.body.password
+      password: req.body.password,
+      location: req.body.location
     }
   }).spread(function(user, wasCreated){ //returns boolean created or not
     if(wasCreated){

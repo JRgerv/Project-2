@@ -39,14 +39,17 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-
-        models.user.hasMany(models.tag)
-        }
+        //
+        // models.user.hasMany(models.tag);
+        // }
         // models.user.belongsToMany(models.user, {
         //   as:'friends',
         //   through: 'user_friends'
         // })
-      
+        models.user.belongsToMany(models.tag,{
+          through:"user_tags"
+        })
+}
     },
     instanceMethods: {
       isValidPassword: function(passwordTyped){

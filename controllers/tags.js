@@ -11,7 +11,7 @@ router.get('/', function(req, res){
 });
 
 //display selected tag and associated tag
-router.get('/', function(req,res){
+router.get('/:id', function(req,res){
   db.tag.findOne({
     where: {id:req.params.id},
     include: [db.user]

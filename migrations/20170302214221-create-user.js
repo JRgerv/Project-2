@@ -30,7 +30,8 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      location: Sequelize.STRING
     });
   },
   down: function(queryInterface, Sequelize) {
