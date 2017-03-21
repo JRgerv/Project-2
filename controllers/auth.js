@@ -43,7 +43,7 @@ router.post('/signup', function(req, res){
       })(req,res);
     } else{
       //already found, bad
-      req.flash('error', 'Email already exhists!');
+      req.flash('error', 'Email already exists!');
       res.redirect('/auth/login');
     }
   }).catch(function(err){

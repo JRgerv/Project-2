@@ -48,6 +48,9 @@ module.exports = function(sequelize, DataTypes) {
         // })
         models.user.belongsToMany(models.tag,{
           through:"user_tags"
+        }),
+        models.user.belongsToMany(models.skill,{
+          through:"user_skills"
         })
 }
     },

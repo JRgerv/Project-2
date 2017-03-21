@@ -36,7 +36,6 @@ app.get('/', function(req, res){ //home page
 });
 
 app.get('/profile', isLoggedin, function(req, res){ // current user profile
-  console.log('in profile index.js thingy');
   res.render("profile");
 });
 
@@ -45,6 +44,7 @@ app.get('/profile', isLoggedin, function(req, res){ // current user profile
 app.use('/auth', require('./controllers/auth'));
 app.use('/tags', require('./controllers/tags'));
 app.use('/profile', require('./controllers/profile'));
+app.use('/users', require('./controllers/users'));
 
 //listen
 app.listen(process.env.PORT || 3000);

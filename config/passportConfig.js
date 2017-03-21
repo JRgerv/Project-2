@@ -39,6 +39,8 @@ passport.use(new facebookStrategy({
   //TRY TO GET USER EMAIL
   var email = profile.emails ? profile.emails[0].value : null;
   //Check if user exists in Database
+  console.log(profile);
+
   db.user.findOne({
     where: {email:email}
   }).then(function(existingUser){
@@ -61,7 +63,7 @@ passport.use(new facebookStrategy({
           email: email,
           firstname: profile.displayName.split(" ")[0],
           lastname: profile.displayName.split(" ")[1],
-          username: profile.displayName
+          username: profile.displayName,
         }
       }).spread(function(user, wasCreated){
         if(wasCreated){

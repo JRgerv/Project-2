@@ -1,0 +1,33 @@
+<h2><%= user.firstname %></h2>
+
+<h3> in <%= user.location %></h3>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Is interested in</h3>
+    <% user.tags.forEach(function(tag){ %>
+      <div class="well">
+        <p>
+          <a href="/tag/<%= tag.id %>">
+            <%= tag.name %>
+
+          </a>
+        </p>
+      </div>
+    <% }); %>
+  </div>
+  <div class="col-sm-6">
+    <h3>can play</h3>
+
+    <% user.skills.forEach(function(skill){ %>
+      <div class="well">
+        <p>
+
+            <%= skill.content %>
+
+          
+        </p>
+      </div>
+    <% }); %>
+  </div>
+</div>
