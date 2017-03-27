@@ -3,12 +3,8 @@
 <h3>Users interested in <%= tag.name %></h3>
 
 <% tag.users.forEach(function(u){ %>
-  <div class="well">
-    <p>
-      <a href="/users/<%= u.id %>">
-        <%= u.firstname %> in <%= u.location %>
-
-      </a>
-    </p>
+  <div class="text-center well col-sm-6">
+    <strong><%= u.firstname %> in <%= u.location %></strong>
+      <a class="pull-right btn btn-info" href="/users/<%= u.id %>"><span class="glyphicon glyphicon-search"></span></a>
   </div>
 <% }); %>

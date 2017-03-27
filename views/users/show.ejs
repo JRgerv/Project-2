@@ -4,28 +4,19 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <h3>Is interested in</h3>
+    <h3>Interests</h3>
     <% user.tags.forEach(function(tag){ %>
       <div class="well">
-        <p>
-          <a href="/tag/<%= tag.id %>">
-            <%= tag.name %>
-
-          </a>
-        </p>
+          <%= tag.name %>
       </div>
     <% }); %>
   </div>
   <div class="col-sm-6">
-    <h3>can play</h3>
-
+    <h3>Skills</h3>
     <% user.skills.forEach(function(skill){ %>
       <div class="well">
         <p>
-
-            <%= skill.content %>
-
-          
+          <%= skill.content %>
         </p>
       </div>
     <% }); %>

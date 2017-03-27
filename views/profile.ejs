@@ -1,22 +1,37 @@
 <h1>My Profile</h1>
-<div class="container">
 
-<form action="/profile/tags/all" method="POST">
-  <div class="form-group">
-    <label for="tags">Tags</label>
-    <input type="text" class="form-control" name="tags">
-    <input type="submit" name="" value="Add Tag">
-  </div>
-</form>
-  <form action="/profile/skills/all" method="post">
-    <div class="form-group">
-      <label for="skills">Skills</label>
-      <input type="text" class="form-control" name="skills">
-      <input type="submit" value="Add Skills">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <ul>
+        <li><h3>Tag yourself with a musical genre! <br> You can add as many you like.</h3></li>
+        <hr>
+        <li><h3>Add a musical skill, specialization, or equipment <br> that you can bring to the table</h3></li>
+      </ul>
     </div>
-  </form>
+    <div class="col-md-6 col-sm-12 drop">
+      <form action="/profile/tags/all" method="POST">
+        <label for="skills">Add Genre</label>
+        <div class="input-group">
+          <input type="text" class="form-control" name="tags" placeholder="Skills">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-plus"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <hr>
+        <form action="/profile/skills/all" method="post">
+          <label for="skills">Add Skills</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="skills" placeholder="Skills">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-plus"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+    </div>
 
-
-
-
-</div>
+  </div>

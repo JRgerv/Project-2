@@ -7,12 +7,11 @@ var router = express.Router();
 //define routes
 router.get('/login', function(req, res){
   res.render('auth/login');
-
 });
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  successFlash: "Good, you logged in!",
+  successFlash: "Log-in Accepted",
   failureRedirect: "/auth/login",
   failureFlash: "Invalid Credentials. Try again."
 }));
@@ -20,8 +19,6 @@ router.post('/login', passport.authenticate('local', {
 router.get('/signup', function(req, res){
   res.render('auth/signup');
 });
-
-
 
 router.post('/signup', function(req, res){
   console.log(req.body);
@@ -34,28 +31,25 @@ router.post('/signup', function(req, res){
       password: req.body.password,
       location: req.body.location
     }
-  }).spread(function(user, wasCreated){ //returns boolean created or not
+  }).spread(function(user, wasCreated){
     if(wasCreated){
-      //good
       passport.authenticate('local', {
         successRedirect: "/",
-        successFlash: "Account created and logged in. You're ready to go!"
+        successFlash: "Account created and logged in."
       })(req,res);
     } else{
-      //already found, bad
       req.flash('error', 'Email already exists!');
       res.redirect('/auth/login');
     }
   }).catch(function(err){
-    req.flash("Zoinks! Error: ", err.message);
+    req.flash("Error: ", err.message);
     res.redirect("/auth/signup");
   });
 });
 
 router.get('/logout', function(req, res){
-  //res.send('logged out :( ');
   req.logout();
-  req.flash("You logged out :(");
+  req.flash("Logged Out");
   res.redirect('/');
 });
 
@@ -69,5 +63,6 @@ router.get('/callback/facebook', passport.authenticate('facebook', {
   failureRedirect:'/auth/login',
   failureFlash: 'Facebook credentials not recognized'
 }));
+
 //export
 module.exports = router;

@@ -3,7 +3,6 @@ var db = require('../models');
 var isLoggedin = require('../middleware/isLoggedin');
 var router = express.Router();
 
-
 router.post('/tags/all', isLoggedin, function(req, res) {
   db.user.findById(req.user.id)
   .then(function(user){
@@ -27,12 +26,10 @@ router.post('/skills/all', isLoggedin, function(req, res) {
     }).spread(function(skill, created){
       user.addSkill(skill).then(function(skill){
         console.log(skill.content, "added to", user.firstname);
-      //  res.redirect("/profile", {user:user});
       res.redirect('/profile');
       })
     })
   });
 });
-
 
 module.exports = router;

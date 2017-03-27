@@ -1,0 +1,19 @@
+body {
+  font-family: 'Baloo Bhaina', cursive;
+  background-image: url('/img/aliens_like_music_planet_by_cokiegaming-d7mapih.jpg');
+  color:#9f9f9f;
+}
+h1,h2,h3,h4 {
+  text-align: center;
+  text-shadow: 2px 2px 4px teal;
+}
+.drop {
+  padding-top: 13px;
+}
+div.well {
+  text-transform:capitalize;
+
+}
+a {
+
+}

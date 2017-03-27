@@ -5,7 +5,7 @@ var db = require('../models');
 require('dotenv').config();
 
 passport.serializeUser(function(user, callback){
-  callback(null, user.id); //error null, return info
+  callback(null, user.id); 
 });
 
 passport.deserializeUser(function(id, cb){
@@ -15,18 +15,18 @@ passport.deserializeUser(function(id, cb){
 });
 
 passport.use(new localStrategy({
-  usernameField: 'email', //uses email for username
+  usernameField: 'email',
   passwordField: 'password'
 }, function(email, password, cb){
   db.user.findOne({
-    where: {email: email} //where email == email
+    where: {email: email}
   }).then(function(user){
     if(!user || !user.isValidPassword(password)){
       cb(null, false);
     }else{
       cb(null, user);
     }
-  }).catch(cb); //send null, null
+  }).catch(cb);
 }));
 
 passport.use(new facebookStrategy({
@@ -36,17 +36,12 @@ passport.use(new facebookStrategy({
   profileFields: ['id', 'email', 'displayName'],
   enableProof: true
 },function(accessToken, refreshToken, profile, cb){
-  //TRY TO GET USER EMAIL
   var email = profile.emails ? profile.emails[0].value : null;
-  //Check if user exists in Database
   console.log(profile);
-
   db.user.findOne({
     where: {email:email}
   }).then(function(existingUser){
-    //This users has logged in before
     if(existingUser && email){
-      //if not-null user is found and FB profile loaded OK
       existingUser.updateAttributes({
         facebookId: profile.id,
         facebookToken: accessToken
@@ -55,7 +50,6 @@ passport.use(new facebookStrategy({
       }).catch(cb);
     }
     else{
-      // new user, needs new db entry
       db.user.findOrCreate({
         where: {facebookId: profile.id},
         defaults: {
@@ -67,11 +61,9 @@ passport.use(new facebookStrategy({
         }
       }).spread(function(user, wasCreated){
         if(wasCreated){
-          //new user, new token
           cb(null, user);
         }
         else{
-          //existing user, update token
           user.facebookToken = accessToken;
           user.save().then(function(){
             cb(null, user);

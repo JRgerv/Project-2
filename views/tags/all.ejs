@@ -1,19 +1,13 @@
 <div class='container'>
   <div class="row">
-    <div class="col-xs-6">
-
-      <h1>Search Users by Tag</h1>
-
-      <p>Select a genre tag to see associated artists!</p>
-
-      <% tags.forEach(function(tag){ %>
-        <div class="well">
-          <p>
+    <h1>Search Users by Tag</h1>
+    <p>Select a genre tag to see associated artists!</p>
+    <% tags.forEach(function(tag){ %>
+    <div class="well text-center col-sm-4">
             <a href="/tags/<%= tag.id %>">
-              <%= tag.name %>
+              <strong><%= tag.name %></strong><span class="pull-right glyphicon glyphicon-search"></span>
             </a>
-          </p>
-        </div>
-      <% }); %>
-
-    
+    </div>
+    <% }); %>
+  </div>
+</div>

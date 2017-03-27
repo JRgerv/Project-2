@@ -23,7 +23,7 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize()); //session must come before passport
 app.use(passport.session());
-
+app.use(express.static(__dirname + '/public'));
 app.use(function(req, res, next){ //custom middleware
   res.locals.currentUser = req.user;
   res.locals.alerts = req.flash();
